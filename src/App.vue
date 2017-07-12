@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <google-map name="heatMap"></google-map>
-    <router-view></router-view>
-
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
-<script>
+// <script>
 import GoogleMap from './components/GoogleMap';
 
 export default {
