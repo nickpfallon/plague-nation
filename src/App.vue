@@ -1,24 +1,20 @@
 <template>
   <div id="app">
-    <button><img src="./assets/logo.png" id="logo"></button>
+    <google-map name="heatMap"></google-map>
     <router-view></router-view>
+
   </div>
 </template>
 
 <script>
+import GoogleMap from './components/GoogleMap';
+
 export default {
   name: 'app',
+  components: { GoogleMap },
 };
 </script>
 
 <style>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 10rem;
-}
-#logo {
-  height: 50vh;
-}
+
 </style>
