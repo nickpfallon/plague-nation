@@ -1,58 +1,61 @@
 <template>
-  <div class="mapbox" id="heatMap"></div>
+  <div>
+    <div class="mapbox" id="heatMap"></div>
+    <div class="button-row">
+      <button id="fever" @click="getFevers">Fever</button>
+      <button id="cough" @clik="getCoughs">Cough</button>
+      <button id="sore-throat" @click="getSoreThroats">Sore Throat</button>
+      <button id="chills" @click="getChills">Chills</button>
+      <button id="headache" @click="getHeadaches">Headache</button>
+      <button id="runny-nose" @click="getRunnyNoses">Runny Nose</button>
+    </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'heatMap',
   props: ['name'],
-  data() {
-    return {
-      heatMap: this.name,
-      markerCoordinates: [
-        {lat: -31.563910, lng: 147.154312},
-        {lat: -33.718234, lng: 150.363181},
-        {lat: -33.727111, lng: 150.371124},
-        {lat: -33.848588, lng: 151.209834},
-        {lat: -33.851702, lng: 151.216968},
-        {lat: -34.671264, lng: 150.863657},
-        {lat: -35.304724, lng: 148.662905},
-        {lat: -36.817685, lng: 175.699196},
-        {lat: -36.828611, lng: 175.790222},
-        {lat: -37.750000, lng: 145.116667},
-        {lat: -37.759859, lng: 145.128708},
-        {lat: -37.765015, lng: 145.133858},
-        {lat: -37.770104, lng: 145.143299},
-        {lat: -37.773700, lng: 145.145187},
-        {lat: -37.774785, lng: 145.137978},
-        {lat: -37.819616, lng: 144.968119},
-        {lat: -38.330766, lng: 144.695692},
-        {lat: -39.927193, lng: 175.053218},
-        {lat: -41.330162, lng: 174.865694},
-        {lat: -42.734358, lng: 147.439506},
-        {lat: -42.734358, lng: 147.501315},
-        {lat: -42.735258, lng: 147.438000},
-        {lat: -43.999792, lng: 170.463352}
-      ]
-    };
+  methods: {
+    getFevers: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=fever')
+      .then(function(response) {
+        console.log(response.body)
+      })
+    },
+    getCoughs: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=cough')
+      .then(function(response) {
+        console.log(response)
+      })
+    },
+    getSoreThroats: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=sore+throat')
+      .then(function(response) {
+        console.log(response)
+      })
+    },
+    getChills: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=chills')
+      .then(function(response) {
+        console.log(response)
+      })
+    },
+    getHeadaches: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=headache')
+      .then(function(response) {
+        console.log(response)
+      })
+    },
+    getRunnyNoses: function() {
+      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=runny+nose')
+      .then(function(response) {
+        console.log(response)
+      })
+    }
   },
   mounted() {
-    // const bounds = new google.maps.LatLngBounds();
-    // const element = document.getElementById('heatMap')
-    // const options = {
-    //   zoom: 14,
-    //   center: new google.maps.LatLng(39.755557,-105.006207)
-    // }
-    // const map = new google.maps.Map(element, options);
-    // this.markerCoordinates.forEach((coord) => {
-    //   const position = new google.maps.LatLng(coord.lat, coord.lng);
-    //   const marker = new google.maps.Marker({
-    //     position,
-    //     map
-    //   });
-    //   var markerCluster = new MarkerClusterer(map, marker, {imagePath: '../assets'});
-    //   map.fitBounds(bounds.extend(position))
-    // });
     var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibWlsM2hpZ2giLCJhIjoiY2o1MnEzd2R6MGlhbDJxcDEzZ3Q0aHh3YyJ9.nmPpnj0A5-pTse4AIS_izg';
@@ -60,7 +63,8 @@ export default {
       container: 'heatMap',
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [-77.38, 39],
-      zoom: 3
+      zoom: 3,
+      pitchWithRotate: false
     });
 
     map.on('load', function() {
@@ -136,8 +140,12 @@ export default {
 #heatMap {
   width: 800px;
   height: 600px;
-  margin: 20px auto;
+  margin: 2em auto;
   background: gray;
   border: solid 3px #666;
+}
+.button-row {
+  display: flex;
+  align-items: center;
 }
 </style>
