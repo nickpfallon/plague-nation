@@ -27,6 +27,7 @@ export default {
           feverCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
         console.log(GeoJSON.parse(feverCoords, {Point: ['lat', 'lng']}))
+        var geoFever = GeoJSON.parse(feverCoords, {Point: ['lat', 'lng']});
       })
     },
     getCoughs: function() {
@@ -36,6 +37,7 @@ export default {
         for (var i = 0; i < response.body.length; i++) {
           coughCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
+        var geoCough = GeoJSON.parse(coughCoords, {Point: ['lat', 'lng']});
       })
     },
     getSoreThroats: function() {
@@ -45,15 +47,17 @@ export default {
         for (var i = 0; i < response.body.length; i++) {
           soreThroatCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
+        var geoSoreThroat = GeoJSON.parse(soreThroatCoords, {Point: ['lat', 'lng']});
       })
     },
     getChills: function() {
-      chillsCoords = []
+      var chillsCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=chills')
       .then(function(response) {
         for (var i = 0; i < response.body.length; i++) {
           chillsCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
+        var geoChills = GeoJSON.parse(chillsCoords, {Point: ['lat', 'lng']});
       })
     },
     getHeadaches: function() {
@@ -63,6 +67,7 @@ export default {
         for (var i = 0; i < response.body.length; i++) {
           headacheCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
+        var geoHeadache = GeoJSON.parse(coughHeadache, {Point: ['lat', 'lng']});
       })
     },
     getRunnyNoses: function() {
@@ -74,6 +79,7 @@ export default {
         for (var i = 0; i < response.body.length; i++) {
           runnyNoseCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
         }
+        var geoRunnyNose = GeoJSON.parse(runnyNoseCoords, {Point: ['lat', 'lng']});
       })
     }
   },
