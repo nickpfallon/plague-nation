@@ -13,45 +13,67 @@
 </template>
 
 <script>
+var GeoJSON = require('geojson');
 
 export default {
   name: 'heatMap',
   props: ['name'],
   methods: {
     getFevers: function() {
+      var feverCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=fever')
       .then(function(response) {
-        console.log(response.body)
+        for (var i = 0; i < response.body.length; i++) {
+          feverCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
+        console.log(GeoJSON.parse(feverCoords, {Point: ['lat', 'lng']}))
       })
     },
     getCoughs: function() {
+      var coughCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=cough')
       .then(function(response) {
-        console.log(response)
+        for (var i = 0; i < response.body.length; i++) {
+          coughCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
       })
     },
     getSoreThroats: function() {
+      var soreThroatCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=sore+throat')
       .then(function(response) {
-        console.log(response)
+        for (var i = 0; i < response.body.length; i++) {
+          soreThroatCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
       })
     },
     getChills: function() {
+      chillsCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=chills')
       .then(function(response) {
-        console.log(response)
+        for (var i = 0; i < response.body.length; i++) {
+          chillsCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
       })
     },
     getHeadaches: function() {
+      var headacheCoords = []
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=headache')
       .then(function(response) {
-        console.log(response)
+        for (var i = 0; i < response.body.length; i++) {
+          headacheCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
       })
     },
     getRunnyNoses: function() {
+      var runnyNoseCoords = []
+      var jsondata = {lat: 39.984, lng: -75.343}
+      var parsed = GeoJSON.parse(jsondata, {Point: ['lat', 'lng']});
       this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=runny+nose')
       .then(function(response) {
-        console.log(response)
+        for (var i = 0; i < response.body.length; i++) {
+          runnyNoseCoords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
+        }
       })
     }
   },
