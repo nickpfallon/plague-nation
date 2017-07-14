@@ -6,8 +6,13 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'Splash',
+    //   component: Splash,
+    // },
     {
-      path: '/',
+      path: '/map',
       name: 'Mapbox',
       component: Mapbox,
     },
