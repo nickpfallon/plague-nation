@@ -12,15 +12,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .title-button {
     width: 50vw;
     height: 10vw;
     font-size: 1em;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     box-shadow: 0px 0px 2em #FFF;
     font-family: "Special Elite", Helvetica, sans-serif;
     padding: 10px;
+    background-color: white;
   }
   .title-button:hover {
     cursor: pointer;
@@ -35,16 +36,12 @@ export default {
     text-align: center;
     font-size: 5rem;
     font-family: "Special Elite", Helvetica, sans-serif;
-    margin-top: 35vh;
-    /*padding-top: 35vh;
-    padding-bottom: 60vh;
+    padding-top: 45vh;
+    padding-bottom: 55vh;
     background-color: #191A1A;
     color: white;
-    padding-left: 100px;
-    padding-right: 100px;*/
   }
   body {
-    background-color: #191A1A;
-    height: 100vh;
+    width: 100vw;
   }
 </style>

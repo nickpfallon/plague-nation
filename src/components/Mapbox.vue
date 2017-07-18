@@ -6,6 +6,7 @@
           <h1 class="title">
             Plague Nation
           </h1>
+          <p>Tracking flu symptoms on Twitter</p>
         </div>
       </div>
     </section>
@@ -13,13 +14,18 @@
       <div id="heatMap"></div>
     </div>
     <div class="button-row">
-      <a id="fever" class="button is-dark" @click="getSymptom('fever')">Fever</a>
-      <a id="cough" class="button is-dark" @click="getSymptom('cough')">Cough</a>
-      <a id="sore-throat" class="button is-dark" @click="getSymptom('sore+throat')">Sore Throat</a>
-      <a id="chills" class="button is-dark" @click="getSymptom('chills')">Chills</a>
-      <a id="headache" class="button is-dark" @click="getSymptom('headache')">Headache</a>
-      <a id="runny-nose" class="button is-dark" @click="getSymptom('runny+nose')">Runny Nose</a>
-      <a id="get-all" class="button is-dark" @click="getAll">See All</a>
+      <div class="buttons">
+        <div class="instruction-div">
+          <p class="instruction">Click a symptom to see a map of the occurrences of the word on Twitter.</p>
+        </div>
+        <a id="fever" class="button" @click="getSymptom('fever')">Fever</a>
+        <a id="cough" class="button" @click="getSymptom('cough')">Cough</a>
+        <a id="sore-throat" class="button" @click="getSymptom('sore+throat')">Sore Throat</a>
+        <a id="chills" class="button" @click="getSymptom('chills')">Chills</a>
+        <a id="headache" class="button" @click="getSymptom('headache')">Headache</a>
+        <a id="runny-nose" class="button" @click="getSymptom('runny+nose')">Runny Nose</a>
+        <a id="get-all" class="button" @click="getAll">See All</a>
+      </div>
     </div>
   </div>
 </template>
@@ -29,7 +35,7 @@ var GeoJSON = require('geojson');
 
 export default {
   name: 'heatMap',
-  props: ['name'],
+  // props: ['name'],
   methods: {
     load: function(geojson) {
       var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -152,9 +158,9 @@ export default {
 
 <style scoped>
 #heatMap {
-  width: 800px;
-  height: 500px;
-  margin: 2em 0;
+  width: 750px;
+  height: 450px;
+  margin: 3em 0;
   background: gray;
   border: solid 3px #666;
   border-radius: 2%;
@@ -167,17 +173,42 @@ export default {
 .button-row {
   display: flex;
   justify-content: center;
-  padding-bottom: 5em;
+  padding-bottom: 2em;
+}
+.buttons {
+  padding: 1.25em;
+  border-radius: 10px;
+  background-color: #191A1A;
 }
 .button {
   margin: 0 .5em;
   font-family: "Special Elite", Helvetica, sans-serif;
-  box-shadow: 0px 0px 1em #343434;
+  box-shadow: 0px 0px 1em #FFF;
+}
+.button:hover {
+  background-color: #191A1A;
+  color: #D11A02;
+  box-shadow: 0px 0px 3em #D11A02;
 }
 h1 {
   font-family: "Special Elite", Helvetica, sans-serif;
 }
 .title {
   font-size: 2.5rem;
+}
+p {
+  font-family: "Special Elite", Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+.hero-body {
+  width: 100vw;
+}
+.instruction {
+  font-size: 1rem;
+  color: white;
+}
+.instruction-div {
+  margin-left: .75rem;
+  padding: 1rem 0;
 }
 </style>

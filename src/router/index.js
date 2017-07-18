@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Mapbox from '@/components/Mapbox';
 import Splash from '@/components/Splash';
+import CountryChart from '@/components/CountryChart'
 
 Vue.use(Router);
 
@@ -15,7 +16,15 @@ export default new Router({
     {
       path: '/map',
       name: 'Mapbox',
-      component: Mapbox,
+      components: {
+        default: Mapbox,
+        // chart: CountryChart
+      },
     },
+    // {
+    //   path: '/map',
+    //   name: 'CountryChart',
+    //   component: CountryChart,
+    // }
   ],
 });
