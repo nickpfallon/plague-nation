@@ -22,6 +22,7 @@ export default {
     font-family: "Special Elite", Helvetica, sans-serif;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
   }
   .title-button:hover {
     cursor: pointer;
@@ -36,8 +37,8 @@ export default {
     text-align: center;
     font-size: 5rem;
     font-family: "Special Elite", Helvetica, sans-serif;
-    padding-top: 45vh;
-    padding-bottom: 55vh;
+    padding-top: 40vh;
+    padding-bottom: 60vh;
     background-color: #191A1A;
     color: white;
   }
