@@ -118,7 +118,7 @@ export default {
     getSymptom: function(symptom) {
       var coords = [];
       var geoSymptom;
-      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?s=' + symptom)
+      this.$http.get('https://thingproxy.freeboard.io/fetch/http://api.flutrack.org/?s=' + symptom)
       .then(function(response) {
         for (var i = 0; i < response.body.length; i++) {
           coords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
@@ -131,7 +131,7 @@ export default {
     getAll: function() {
       var coords = [];
       var geoSymptom;
-      this.$http.get('https://galvanize-cors-proxy.herokuapp.com/http://api.flutrack.org/?limit=100')
+      this.$http.get('https://thingproxy.freeboard.io/fetch/http://api.flutrack.org/?limit=100')
       .then(function(response) {
         for (var i = 0; i < response.body.length; i++) {
           coords.push({lat: Number(response.body[i].latitude), lng: Number(response.body[i].longitude)})
