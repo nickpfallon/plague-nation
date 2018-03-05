@@ -1,6 +1,8 @@
-# plague-nation
+# Plague Nation
 
-> Vue Capstone
+* This application uses mentions of flu symptoms on Twitter to visually map the locations of those tweets around the world.
+* Specific symptoms can be mapped by clicking the button for the symptom under the map, or they can all be mapped at once.
+* The map uses clustering of locations based on zoom distance to show where the higher and lower concentrations of flu symptom mentions occur.
 
 ## Build Setup
 
